@@ -1,0 +1,310 @@
+
+
+   <div id="top">
+       <div class="container">
+           <div class="col-md-6 offer" data-animate="fadeInDown">
+
+           </div>
+           <% if(!user) { %>
+           <div class="col-md-6" data-animate="fadeInDown">
+               <ul class="menu">
+                 <li><a href="login">Logowanie</a>
+                 </li>
+                   <li><a href="signup">Rejestracja</a>
+                   </li>
+                   <li><a href="contact">Kontakt</a>
+                   </li>
+
+               </ul>
+           </div>
+       </div>
+       <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+           <div class="modal-dialog modal-sm">
+
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                       <h4 class="modal-title" id="Login">Customer login</h4>
+                   </div>
+                   <div class="modal-body">
+                       <form action="customer-orders.html" method="post">
+                           <div class="form-group">
+                               <input type="text" class="form-control" id="email-modal" placeholder="email">
+                           </div>
+                           <div class="form-group">
+                               <input type="password" class="form-control" id="password-modal" placeholder="password">
+                           </div>
+
+                           <p class="text-center">
+                               <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                           </p>
+
+                       </form>
+
+                       <p class="text-center text-muted">Not registered yet?</p>
+                       <p class="text-center text-muted"><a href="signup"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+
+   </div>
+
+   <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+       <div class="container">
+         <div class="navbar-header">
+
+             <a class="navbar-brand home" href="./" data-animate-hover="bounce">
+                 <img src="/img/logo.png" alt="Monache Logo" class="hidden-xs">
+                 <img src="/img/logo-small.png" alt="Monache Logo" class="visible-xs"><span class="sr-only">Monache - go to homepage</span>
+             </a>
+             <div class="navbar-buttons">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                     <span class="sr-only">Toggle navigation</span>
+                     <i class="fa fa-align-justify"></i>
+                 </button>
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                     <span class="sr-only">Toggle search</span>
+                     <i class="fa fa-search"></i>
+                 </button>
+                 <a class="btn btn-default navbar-toggle" href="/basket.html">
+                     <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">koszyk jest pusty</span>
+                 </a>
+             </div>
+         </div>
+           <!--/.navbar-header -->
+
+           <div class="navbar-collapse collapse" id="navigation">
+
+               <ul class="nav navbar-nav navbar-left">
+                   <li class="active"><a href="./">Głowna</a>
+                   </li>
+                   <li class="dropdown yamm-fw">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Kategorie <b class="caret"></b></a>
+                       <ul class="dropdown-menu">
+
+                           <li>
+                               <div class="yamm-content">
+                                   <div class="row">
+                                       <div class="col-sm-3">
+                                        <ul>
+<li><a href="/kolczyki"><%= categories[0].name %></a></li>
+</ul>
+<ul>
+<li><a href="/bransoletki"><%= categories[1].name %></a></li>
+</ul>
+<ul>
+<li><a href="/wisiorki"><%= categories[2].name %></a></li>
+</ul>
+<ul>
+<li><a href="/komplety"><%= categories[3].name %></a></li>
+</ul>
+<ul>
+<li><a href="inne"><%= categories[4].name %></a></li>
+</ul>
+                                       <ul>
+
+                                      </div>
+
+                                       <div class="col-sm-3">
+                                           <div class="banner">
+                                               <a href="#">
+                                                   <img src="img/banner.jpg" class="img img-responsive" alt="">
+                                               </a>
+                                           </div>
+
+                                       </div>
+                                   </div>
+                               </div>
+
+                           </li>
+                       </ul>
+                   </li>
+
+
+           </div>
+           <!--/.nav-collapse -->
+
+           <div class="navbar-buttons">
+
+               <div class="navbar-collapse collapse right" id="basket-overview">
+                   <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 produkty w koszyku</span></a>
+               </div>
+               <!--/.nav-collapse -->
+
+               <div class="navbar-collapse collapse right" id="search-not-mobile">
+                   <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                       <span class="sr-only">Toggle search</span>
+                       <i class="fa fa-search"></i>
+                   </button>
+               </div>
+
+           </div>
+
+           <div class="collapse clearfix" id="search">
+
+               <form class="navbar-form" method post action="/search">
+                   <div class="form-group">
+                       <input type="text" name="q" class="form-control" placeholder="Wpisz nazwe produktu">
+
+
+    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+
+
+                   </div>
+               </form>
+
+           </div>
+           <!--/.nav-collapse -->
+
+       </div>
+       <!-- /.container -->
+   </div>
+
+   <% } else { %>
+             <div class="col-md-6" data-animate="fadeInDown">
+                 <ul class="menu">
+                     <li><a  data-toggle="modal" href="/profile"><%=user.profile.name %></a>
+                     </li>
+
+                     <li><a href="/logout">Wylogowanie</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+             <div class="modal-dialog modal-sm">
+
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                         <h4 class="modal-title" id="Login">Customer login</h4>
+                     </div>
+                     <div class="modal-body">
+                         <form action="customer-orders.html" method="post">
+                             <div class="form-group">
+                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
+                             </div>
+                             <div class="form-group">
+                                 <input type="password" class="form-control" id="password-modal" placeholder="password">
+                             </div>
+
+                             <p class="text-center">
+                                 <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                             </p>
+
+                         </form>
+
+                         <p class="text-center text-muted">Not registered yet?</p>
+                         <p class="text-center text-muted"><a href="signup"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+         <div class="container">
+             <div class="navbar-header">
+
+                 <a class="navbar-brand home" href="./" data-animate-hover="bounce">
+                     <img src="/img/logo.png" alt="Monache Logo" class="hidden-xs">
+                     <img src="/img/logo-small.png" alt="Monache Logo" class="visible-xs"><span class="sr-only">Monache - go to homepage</span>
+                 </a>
+                 <div class="navbar-buttons">
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                         <span class="sr-only">Toggle navigation</span>
+                         <i class="fa fa-align-justify"></i>
+                     </button>
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                         <span class="sr-only">Toggle search</span>
+                         <i class="fa fa-search"></i>
+                     </button>
+                     <a class="btn btn-default navbar-toggle" href="/basket.html">
+                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">koszyk jest pusty</span>
+                     </a>
+                 </div>
+             </div>
+             <!--/.navbar-header -->
+
+             <div class="navbar-collapse collapse" id="navigation">
+
+                 <ul class="nav navbar-nav navbar-left">
+                     <li class="active"><a href="./">Głowna</a>
+                     </li>
+                     <li class="dropdown yamm-fw">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Kategorie <b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+
+                             <li>
+                                 <div class="yamm-content">
+                                     <div class="row">
+                                         <div class="col-sm-3">
+                                          <ul>
+                                          <% for (var i = 0; i < categories.length; i++) { %>
+                                              <li><a href="/products/<%= categories[i]._id %>"><%= categories[i].name %></a></li>
+  <% } %>
+                                          </ul>
+                                         <ul>
+
+                                        </div>
+
+                                         <div class="col-sm-3">
+                                             <div class="banner">
+                                                 <a href="#">
+                                                     <img src="img/banner.jpg" class="img img-responsive" alt="">
+                                                 </a>
+                                             </div>
+
+                                         </div>
+                                     </div>
+                                 </div>
+
+                             </li>
+                         </ul>
+                     </li>
+
+
+             </div>
+             <!--/.nav-collapse -->
+
+             <div class="navbar-buttons">
+
+                 <div class="navbar-collapse collapse right" id="basket-overview">
+                     <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 produkty w koszyku</span></a>
+                 </div>
+                 <!--/.nav-collapse -->
+
+                 <div class="navbar-collapse collapse right" id="search-not-mobile">
+                     <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                         <span class="sr-only">Toggle search</span>
+                         <i class="fa fa-search"></i>
+                     </button>
+                 </div>
+
+             </div>
+
+             <div class="collapse clearfix" id="search">
+
+                 <form class="navbar-form" method post action="/search">
+                     <div class="form-group">
+                         <input type="text" name="q" class="form-control" placeholder="Wpisz nazwe produktu">
+
+
+      <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+
+
+                     </div>
+                 </form>
+
+
+             </div>
+             <!--/.nav-collapse -->
+
+         </div>
+         <!-- /.container -->
+     </div>
+
+     <% } %>
